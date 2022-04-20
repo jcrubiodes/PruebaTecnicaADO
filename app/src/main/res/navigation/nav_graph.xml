@@ -22,7 +22,17 @@
         tools:layout="@layout/fragment_second">
 
         <action
+            android:id="@+id/action_SecondFragment_to_ThreeActivity"
+            app:destination="@id/SecondFragment" />
+        <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            app:destination="@id/ThreeActivity" />
     </fragment>
+    <activity
+        android:id="@+id/ThreeActivity"
+        android:name="mx.com.multiplica.ado.ThreeActivity"
+        android:label="@string/three_activity_label"
+        tools:layout="@layout/activity_three">
+
+    </activity>
 </navigation>
