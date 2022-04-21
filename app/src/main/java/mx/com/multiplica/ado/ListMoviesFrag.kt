@@ -66,9 +66,6 @@ class ListMoviesFrag : Fragment(), ContratoPeliculas.Vista {
         this.opcionWS = args.getInt(Constantes.OPC_WS, 0)
         this.opcionBusqueda = args.getBoolean(Constantes.OPC_BUSQUEDA, false)
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_ListMoviesFrag_to_DetailMovieFrag)
-        }
         binding.btnPagination.setOnClickListener {
             pagination++
             MVP_ConsultaPeliculas(this).consultingListMovies(pagination, opcionWS, opcionMenu)

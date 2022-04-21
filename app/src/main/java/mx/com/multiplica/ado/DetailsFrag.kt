@@ -63,7 +63,9 @@ class DetailsFrag : Fragment(), ContratoDetail.Vista {
 
     override fun respuestaWS(respuesta: String) {
         val gson = Gson()
-        if (opcionSearch) {
+        Log.e(Constantes.getTagConsole(), "opcoi->" + opcionWS)
+        Log.e(Constantes.getTagConsole(), "opcoi->" + opcionMenu)
+        if (opcionWS == 0) {
             val res = gson.fromJson(
                 respuesta,
                 Details::class.java
@@ -103,6 +105,9 @@ class DetailsFrag : Fragment(), ContratoDetail.Vista {
             .into(binding.imgDetailsMovie)
         binding.txtTitle.text = details.title
         binding.txtOverView.text = details.overview
+        if (details.overview.isEmpty() || details.overview == null) {
+            binding.txtOverView.text = App.instance.getString(R.string.sin_informacion)
+        }
     }
 
     override fun actualizaVistaDetailTV(details: DetailsTV) {
@@ -113,6 +118,9 @@ class DetailsFrag : Fragment(), ContratoDetail.Vista {
             .into(binding.imgDetailsMovie)
         binding.txtTitle.text = details.name
         binding.txtOverView.text = details.overview
+        if (details.overview.isEmpty() || details.overview == null) {
+            binding.txtOverView.text = App.instance.getString(R.string.sin_informacion)
+        }
     }
 
     override fun mostrarVideoYouTube(urlYouTubeVideo: ResultsYouTubeVideo) {

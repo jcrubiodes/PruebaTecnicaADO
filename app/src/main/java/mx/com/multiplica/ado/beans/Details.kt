@@ -16,6 +16,7 @@ class Details(
     poster_path: String,
     release_date: String,
     revenue: Int,
+    name: String,
     runtime: Int,
     status: String,
     tagline: String,
@@ -31,6 +32,7 @@ class Details(
     var genres: ArrayList<Genres>
     var homepage: String
     var id: Int
+    var name: String
     var imdb_id: String
     var original_language: String
     var original_title: String
@@ -55,6 +57,7 @@ class Details(
         this.genres = genres
         this.homepage = homepage
         this.id = id
+        this.name = name
         this.imdb_id = imdb_id
         this.original_language = original_language
         this.original_title = original_title
