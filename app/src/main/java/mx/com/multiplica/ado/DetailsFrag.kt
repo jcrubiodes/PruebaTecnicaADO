@@ -63,8 +63,6 @@ class DetailsFrag : Fragment(), ContratoDetail.Vista {
 
     override fun respuestaWS(respuesta: String) {
         val gson = Gson()
-        Log.e(Constantes.getTagConsole(), "opcoi->" + opcionWS)
-        Log.e(Constantes.getTagConsole(), "opcoi->" + opcionMenu)
         if (opcionWS == 0) {
             val res = gson.fromJson(
                 respuesta,
