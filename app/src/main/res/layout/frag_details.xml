@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".DetailsFrag">
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progress_Bar_sec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:indicatorColor="@color/purple_500"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imgDetailsMovie"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black_trans"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_detail"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_detail">
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/purple_700"
+                android:textSize="@dimen/title_size_sp"
+                android:textStyle="bold|italic" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_bar"
+                android:background="@color/white" />
+
+            <TextView
+                android:id="@+id/txtOverView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/purple_700" />
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvYoutube"
+            android:layout_width="@dimen/cincuenta_dp"
+            android:layout_height="@dimen/sesenta_cinco_dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingEnd="@dimen/fab_margin"
+            android:visibility="gone"
+            app:cardCornerRadius="@dimen/corner_rados_dp"
+            app:cardElevation="@dimen/cards_elevation_dp"
+            app:layout_scrollFlags="scroll|enterAlways"
+            card_view:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="@dimen/cincuenta_dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnShowTube"
+                    android:layout_width="@dimen/cincuenta_dp"
+                    android:layout_height="@dimen/cincuenta_dp"
+                    android:background="@color/white"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_youtube" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/msg_trailer"
+                    android:textColor="@color/purple_500" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

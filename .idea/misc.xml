@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/ic_youtube.xml" value="0.1725" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.28125" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.28125" />
+        <entry key="app/src/main/res/layout/activity_three.xml" value="0.28125" />
+        <entry key="app/src/main/res/layout/activity_video.xml" value="0.28125" />
+        <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.28125" />
+        <entry key="app/src/main/res/layout/card_view_menu.xml" value="0.28125" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.28125" />
+        <entry key="app/src/main/res/layout/content_main2.xml" value="0.28125" />
+        <entry key="app/src/main/res/layout/frag_details.xml" value="0.6475723266601563" />
+        <entry key="app/src/main/res/layout/frag_listmovies.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/frag_liststv.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/fragment_first.xml" value="0.2682291666666667" />
+        <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.28125" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.28125" />
+        <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.29583333333333334" />
+        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.248779296875" />
+        <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.28125" />
+        <entry key="app/src/main/res/layout/fragment_three.xml" value="0.28125" />
+        <entry key="app/src/main/res/layout/fragments_demo.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/row_grid.xml" value="0.2682291666666667" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.2953125" />
+        <entry key="app/src/main/res/menu/menu_main.xml" value="0.28125" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

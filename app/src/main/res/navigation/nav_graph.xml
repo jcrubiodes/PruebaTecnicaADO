@@ -3,26 +3,56 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/MenuFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="mx.com.multiplica.ado.FirstFragment"
+        android:id="@+id/MenuFragment"
+        android:name="mx.com.multiplica.ado.MenuFragment"
+        android:label="@string/menu_fragment_label"
+        tools:layout="@layout/fragment_menu">
+        <action
+            android:id="@+id/action_MenuFragment_to_ListMoviesFrag"
+            app:destination="@id/ListMoviesFrag" />
+
+        <action
+            android:id="@+id/action_MenuFragment_to_ListSeriesFrag"
+            app:destination="@id/ListSeriesFrag" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ListSeriesFrag"
+        android:name="mx.com.multiplica.ado.ListSeriesFrag"
+        android:label="@string/series_fragment_label"
+        tools:layout="@layout/frag_listmovies">
+        <action
+            android:id="@+id/action_ListMoviesFrag_to_DetailMovieFrag"
+            app:destination="@id/DetailMoviesFrag" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ListMoviesFrag"
+        android:name="mx.com.multiplica.ado.ListMoviesFrag"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
+        tools:layout="@layout/frag_listmovies">
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_ListMoviesFrag_to_DetailMovieFrag"
+            app:destination="@id/DetailMoviesFrag" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="mx.com.multiplica.ado.SecondFragment"
+        android:id="@+id/DetailMoviesFrag"
+        android:name="mx.com.multiplica.ado.DetailsFrag"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
+        tools:layout="@layout/frag_details">
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_DetailMovieFrag_to_VideoYouTubeAct"
+            app:destination="@id/DetailMoviesFrag" />
+        <action
+            android:id="@+id/action_DetailMovieFrag_to_ListMoviesFrag"
+            app:destination="@id/VideoActivity" />
     </fragment>
+    <activity
+        android:id="@+id/VideoActivity"
+        android:name="mx.com.multiplica.ado.VideoActivity"
+        android:label="@string/three_activity_label"
+        tools:layout="@layout/activity_video"></activity>
 </navigation>
