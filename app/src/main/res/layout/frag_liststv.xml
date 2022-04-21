@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".FirstFragment">
+    tools:context=".ListSeriesFrag">
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progress_Bar"
@@ -21,10 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:gravity="left"
-        android:padding="10dp"
-        android:text=""
+        android:padding="@dimen/paddinf_diez"
         android:textColor="@color/purple_200"
-        android:textSize="16sp"
+        android:textSize="@dimen/diez_seis_sp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints" />
 
@@ -33,37 +32,13 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_centerHorizontal="true"
-        android:columnWidth="80dp"
         android:gravity="center"
-        android:numColumns="auto_fit"
-        android:padding="5dp"
+        android:padding="@dimen/padding_cinco"
         android:stretchMode="columnWidth"
         app:layout_constraintBottom_toTopOf="@+id/btn_pagination"
         app:layout_constraintTop_toBottomOf="@+id/txtMsgHead"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp" />
-
-    <TextView
-        android:id="@+id/textview_first"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_first_fragment"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/button_first"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button_first"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/next"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_first" />
 
     <Button
         android:id="@+id/btn_pagination"

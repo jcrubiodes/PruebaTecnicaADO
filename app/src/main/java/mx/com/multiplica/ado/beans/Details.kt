@@ -1,6 +1,6 @@
 package mx.com.multiplica.ado.beans
 
-class DetailsMovie(
+class Details(
     adult: Boolean,
     backdrop_path: String,
     belongs_to_collection: Any,

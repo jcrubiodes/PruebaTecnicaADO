@@ -1,6 +1,7 @@
 package mx.com.multiplica.ado
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,9 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import mx.com.multiplica.ado.beans.DetailsMovie
+import com.google.gson.Gson
+import mx.com.multiplica.ado.beans.Details
+import mx.com.multiplica.ado.beans.DetailsTV
 import mx.com.multiplica.ado.beans.ResultsYouTubeVideo
-import mx.com.multiplica.ado.databinding.FragmentSecondBinding
+import mx.com.multiplica.ado.databinding.FragDetailsBinding
 import mx.com.multiplica.ado.presents.detailsmovie.ContratoDetail
 import mx.com.multiplica.ado.presents.detailsmovie.MVP_ConsultingMovieDetail
 import mx.com.multiplica.ado.utils.Constantes
@@ -18,11 +21,14 @@ import mx.com.multiplica.ado.utils.Constantes
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class SecondFragment : Fragment(), ContratoDetail.Vista {
+class DetailsFrag : Fragment(), ContratoDetail.Vista {
 
-    private var _binding: FragmentSecondBinding? = null
+    private var _binding: FragDetailsBinding? = null
     private val binding get() = _binding!!
     private var idMovie: Int = 0
+    private var opcionMenu: Int = 0
+    private var opcionWS: Int = 0
+    private var opcionSearch = false
     private var urlYouTube: String = ""
 
     private var requestOptions: RequestOptions? = null
@@ -31,20 +37,44 @@ class SecondFragment : Fragment(), ContratoDetail.Vista {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = FragDetailsBinding.inflate(inflater, container, false)
         val args = getArguments()
         this.idMovie = args?.getInt(Constantes.ID_MOVIE, 0)!!
-        MVP_ConsultingMovieDetail(this).consultingDetailMovie(idMovie)
+        this.opcionMenu = args.getInt(Constantes.OPC_MENU, 0)
+        this.opcionWS = args.getInt(Constantes.OPC_WS, 0)
+        this.opcionSearch = args.getBoolean(Constantes.OPC_BUSQUEDA, false)
+        if (opcionSearch) {
+            opcionWS = opcionMenu - 3
+            Log.e(Constantes.getTagConsole(), "opcion->" + opcionWS)
+        }
+        MVP_ConsultingMovieDetail(this).consultingDetailMovie(idMovie, opcionWS, 0)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requestOptions = RequestOptions()
-        val bundle = Bundle()
         binding.btnShowTube.setOnClickListener {
+            val bundle = Bundle()
             bundle.putString(Constantes.STR_URLVIDEOYOUTUBE, urlYouTube)
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment, bundle)
+            findNavController().navigate(R.id.action_DetailMovieFrag_to_ListMoviesFrag, bundle)
+        }
+    }
+
+    override fun respuestaWS(respuesta: String) {
+        val gson = Gson()
+        if (opcionSearch) {
+            val res = gson.fromJson(
+                respuesta,
+                Details::class.java
+            )
+            actualizaVistaDetail(res)
+        } else {
+            val res = gson.fromJson(
+                respuesta,
+                DetailsTV::class.java
+            )
+            actualizaVistaDetailTV(res)
         }
     }
 
@@ -56,7 +86,7 @@ class SecondFragment : Fragment(), ContratoDetail.Vista {
     override fun actualizaProgress(progress: Int) {
         binding.progressBarSec.progress = progress
         if (progress == 100) {
-            MVP_ConsultingMovieDetail(this).consultingYouTubeMovie(idMovie)
+            MVP_ConsultingMovieDetail(this).consultingYouTubeMovie(idMovie, opcionWS, 0)
         }
         if (progress >= 100) {
             binding.progressBarSec.visibility = View.GONE
@@ -65,14 +95,24 @@ class SecondFragment : Fragment(), ContratoDetail.Vista {
         }
     }
 
-    override fun actualizaVistaDetail(detailsMovie: DetailsMovie) {
+    override fun actualizaVistaDetail(details: Details) {
         Glide.with(App.instance)
             .setDefaultRequestOptions(requestOptions?.placeholder(R.drawable.wait_image)!!)
             .setDefaultRequestOptions(requestOptions?.error(R.drawable.error_imagen)!!)
-            .load(Constantes.getImageURL("w1280", detailsMovie.poster_path))
+            .load(Constantes.getImageURL("w1280", details.poster_path))
             .into(binding.imgDetailsMovie)
-        binding.txtTitle.text = detailsMovie.title
-        binding.txtOverView.text = detailsMovie.overview
+        binding.txtTitle.text = details.title
+        binding.txtOverView.text = details.overview
+    }
+
+    override fun actualizaVistaDetailTV(details: DetailsTV) {
+        Glide.with(App.instance)
+            .setDefaultRequestOptions(requestOptions?.placeholder(R.drawable.wait_image)!!)
+            .setDefaultRequestOptions(requestOptions?.error(R.drawable.error_imagen)!!)
+            .load(Constantes.getImageURL("w1280", details.poster_path))
+            .into(binding.imgDetailsMovie)
+        binding.txtTitle.text = details.name
+        binding.txtOverView.text = details.overview
     }
 
     override fun mostrarVideoYouTube(urlYouTubeVideo: ResultsYouTubeVideo) {

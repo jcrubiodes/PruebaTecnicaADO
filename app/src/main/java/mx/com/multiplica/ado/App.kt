@@ -1,6 +1,7 @@
 package mx.com.multiplica.ado
 
 import android.app.Application
+import mx.com.multiplica.ado.utils.Prefs
 
 class App : Application() {
     companion object {

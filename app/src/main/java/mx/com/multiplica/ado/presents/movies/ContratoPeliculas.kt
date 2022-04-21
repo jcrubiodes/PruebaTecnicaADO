@@ -1,19 +1,23 @@
 package mx.com.multiplica.ado.presents.movies
 
-import mx.com.multiplica.ado.beans.DetailsMovie
-import mx.com.multiplica.ado.beans.ResultsMovie
-
 class ContratoPeliculas {
 
     interface Vista {
         fun muestraToast(mensaje: String, tiempo: Int)
-        fun actualizaVista(results: ResultsMovie)
         fun actualizaProgress(progress: Int)
+        fun respuestaWS(res: String)
     }
 
     interface Presentador {
         fun consultingListMovies(
-            pagination: Int
+            pagination: Int, method: Int, subMethod: Int
+        )
+
+        fun consultingListMoviesSearchs(
+            pagination: Int,
+            method: Int,
+            subMethod: Int,
+            wordSearc: String
         )
     }
 }

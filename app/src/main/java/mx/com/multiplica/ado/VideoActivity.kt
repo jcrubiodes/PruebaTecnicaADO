@@ -9,13 +9,13 @@ import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayer.OnInitializedListener
 import com.google.android.youtube.player.YouTubePlayer.Provider
 import com.google.android.youtube.player.YouTubePlayerView
-import mx.com.multiplica.ado.databinding.ActivityThreeBinding
+import mx.com.multiplica.ado.databinding.ActivityVideoBinding
 import mx.com.multiplica.ado.utils.Constantes
 import mx.com.multiplica.ado.youtube.DeveloperKey
 
-class ThreeActivity : YouTubeBaseActivity(), OnInitializedListener {
+class VideoActivity : YouTubeBaseActivity(), OnInitializedListener {
 
-    private var _binding: ActivityThreeBinding? = null
+    private var _binding: ActivityVideoBinding? = null
 
     private val RECOVERY_REQUEST = 1
     private var youTubeView: YouTubePlayerView? = null
@@ -26,7 +26,7 @@ class ThreeActivity : YouTubeBaseActivity(), OnInitializedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityThreeBinding.inflate(layoutInflater)
+        _binding = ActivityVideoBinding.inflate(layoutInflater)
         setContentView(binding.root)
         youTubeView = binding.youtubevideo as YouTubePlayerView
         youTubeView!!.initialize(DeveloperKey.DEVELOPER_KEY, this)

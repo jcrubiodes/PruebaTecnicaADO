@@ -12,4 +12,13 @@
     <dimen name="view_bar">1dp</dimen>
     <dimen name="margin_detail">5dp</dimen>
     <dimen name="veinte_cuatro_sp">24sp</dimen>
+    <dimen name="cincuenta_dp">50dp</dimen>
+    <dimen name="cien_dp">100dp</dimen>
+    <dimen name="sesenta_cinco_dp">65dp</dimen>
+    <dimen name="corner_rados_dp">2dp</dimen>
+    <dimen name="cards_elevation_dp">5dp</dimen>
+    <dimen name="margin_cinco_dp">5dp</dimen>
+    <dimen name="doce_sp">12sp</dimen>
+    <dimen name="paddinf_diez">10dp</dimen>
+    <dimen name="padding_cinco">5dp</dimen>
 </resources>

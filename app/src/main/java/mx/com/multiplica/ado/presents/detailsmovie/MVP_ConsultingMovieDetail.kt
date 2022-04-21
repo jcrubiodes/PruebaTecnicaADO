@@ -7,19 +7,18 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import mx.com.multiplica.ado.beans.DetailsMovie
 import mx.com.multiplica.ado.beans.ResultsYouTubeVideo
 import mx.com.multiplica.ado.utils.Constantes
 import mx.com.multiplica.ado.webservice.WebServicesNew
 
 class MVP_ConsultingMovieDetail(var contrato: ContratoDetail.Vista) : ContratoDetail.Presentador {
 
-    override fun consultingDetailMovie(idMovie: Int) {
+    override fun consultingDetailMovie(idMovie: Int, method: Int, subMethod: Int) {
         contrato.actualizaProgress(0)
         try {
             CoroutineScope(Dispatchers.IO).launch {
                 val urlURI =
-                    Uri.parse(Constantes.getURL(0, 1) + idMovie.toString()).buildUpon()
+                    Uri.parse(Constantes.getURL(method, subMethod) + idMovie.toString()).buildUpon()
                         .appendQueryParameter(Constantes.STR_APIKEY, Constantes.STR_APIKEY_VALUE)
                         .appendQueryParameter(
                             Constantes.STR_LENGUAGE,
@@ -31,16 +30,9 @@ class MVP_ConsultingMovieDetail(var contrato: ContratoDetail.Vista) : ContratoDe
                 contrato.actualizaProgress(10)
                 withContext(Dispatchers.Main) {
                     Log.e(Constantes.getTagConsole(), "$respuesta")
-                    val gson = Gson()
-                    contrato.actualizaProgress(30)
-                    val res = gson.fromJson(
-                        respuesta,
-                        DetailsMovie::class.java
-                    )
                     contrato.actualizaProgress(40)
-                    contrato.actualizaVistaDetail(res)
+                    contrato.respuestaWS(respuesta)
                     contrato.actualizaProgress(100)
-                    Log.e(Constantes.getTagConsole(), "res->$res")
                 }
             }
         } catch (ex: Exception) {
@@ -48,12 +40,12 @@ class MVP_ConsultingMovieDetail(var contrato: ContratoDetail.Vista) : ContratoDe
         }
     }
 
-    override fun consultingYouTubeMovie(idMovie: Int) {
+    override fun consultingYouTubeMovie(idMovie: Int, method: Int, subMethod: Int) {
         try {
             CoroutineScope(Dispatchers.IO).launch {
                 val urlURI =
                     Uri.parse(
-                        Constantes.getURL(0, 1) + idMovie.toString()
+                        Constantes.getURL(method, subMethod) + idMovie.toString()
                                 + "/videos"
                     ).buildUpon()
                         .appendQueryParameter(Constantes.STR_APIKEY, Constantes.STR_APIKEY_VALUE)

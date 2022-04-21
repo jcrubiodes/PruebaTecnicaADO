@@ -1,4 +1,4 @@
-package mx.com.multiplica.ado
+package mx.com.multiplica.ado.utils
 
 import android.content.Context
 import android.content.SharedPreferences

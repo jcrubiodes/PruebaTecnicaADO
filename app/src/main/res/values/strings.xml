@@ -2,7 +2,9 @@
     <string name="app_name">Prueba Tecnica ADO</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
+    <string name="menu_fragment_label">Menú principal</string>
     <string name="first_fragment_label">Películas populares</string>
+    <string name="series_fragment_label">Series populares</string>
     <string name="second_fragment_label">Detalle de la pelicular</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
@@ -26,5 +28,7 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="three_activity_label">Video Youtube</string>
     <string name="player_error">Error initializing YouTube player: %s</string>
+    <string name="menu_title">Seleccionar una opción</string>
+    <string name="msg_trailer">Trailer</string>
 
 </resources>
